@@ -1,0 +1,148 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 11px !important;
+}
+
+.plus_button {
+	background-image: url("imagens/plus_button.png") !important;
+}
+</style>
+</h:head>
+
+<h:body>
+	<h:form id="formPrincipal">
+
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:panel header="Lista de Medico Cadastrados"
+			style="margin-bottom:10px;">
+			<h:panelGrid columns="1" cellpadding="5">
+				<p:commandButton value="Cadastrar" id="cadastrar"
+					oncomplete="dialogCadastrar.show()" image="plus_button" />
+
+				<p:dataTable var="listaMedico" value="#{medicoController.ListaMedicoBean}"
+					id="tabelaMedicos">
+
+					<p:column headerText="Id Medico">
+						<h:outputText value="#{listaMedico.idmedico}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{listaMedico.nome}" />
+					</p:column>
+
+					<p:column headerText="Ações">
+						<p:commandLink title="Alterar" update=":formAlterar:Alterar"
+							oncomplete="dialogAlterar.show()" immediate="true">
+							<p:graphicImage style="border:0" value="/imagens/tick_button.png" />
+							<f:setPropertyActionListener
+								target="#{medicoController.medicoBean}" value="#{listaMedico}" />
+						</p:commandLink>
+						<p:commandLink title="Excluir" update=":formExcluir:Excluir"
+							oncomplete="confirmation.show()" immediate="true">
+							<p:graphicImage style="border:0"
+								value="/imagens/exclamation_button.png" />
+							<f:setPropertyActionListener
+								target="#{medicoController.medicoBean}" value="#{listaMedico}" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+			</h:panelGrid>
+		</p:panel>
+
+		<!-- Especialidade -->
+		<p:panel header="Lista de Especialidade Cadastradas"
+			style="margin-bottom:10px;">
+
+
+			<h:panelGrid columns="1" cellpadding="5">
+
+				<p:commandButton value="Cadastrar" id="cadastrarEsp"
+					oncomplete="dialogCadastrar.show()" image="plus_button" />
+
+				<p:dataTable var="especialidade"
+					value="#{especialidadeController.listar}" id="tabelaEspecialidades">
+					<p:column headerText="Id Especialidade">
+						<h:outputText value="#{especialidade.idespecialidade}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{especialidade.nome}" />
+					</p:column>
+
+					<p:column headerText="Ações">
+						<p:commandLink title="Alterar" update=":formAlterar:Alterar"
+							oncomplete="dialogAlterar.show()" immediate="true">
+							<p:graphicImage style="border:0" value="/imagens/tick_button.png" />
+							<f:setPropertyActionListener
+								target="#{medicoController.medicoBean}" value="#{listaMedico}" />
+						</p:commandLink>
+						<p:commandLink title="Excluir" update=":formExcluir:Excluir"
+							oncomplete="confirmation.show()" immediate="true">
+							<p:graphicImage style="border:0"
+								value="/imagens/exclamation_button.png" />
+							<f:setPropertyActionListener
+								target="#{medicoController.medicoBean}" value="#{listaMedico}" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+			</h:panelGrid>
+		</p:panel>
+
+	</h:form>
+
+	<h:form id="formAlterar">
+		<p:dialog header="Alterar" widgetVar="dialogAlterar" modal="true"
+			id="Alterar">
+			<h:panelGrid id="panelAlterar" columns="2" cellpadding="5">
+				<h:outputText value="Medico Id:" />
+				<p:inputText value="#{medicoController.medicoBean.idmedico}" />
+				<h:outputText value="Nome:" />
+				<p:inputText value="#{medicoController.medicoBean.nome}" />
+			</h:panelGrid>
+			<p:commandButton value="Alterar"
+				actionListener="#{medicoController.alterar}"
+				update=":formPrincipal:tabelaMedicos"
+				oncomplete="dialogAlterar.hide()" />
+		</p:dialog>
+	</h:form>
+
+	<h:form id="formCadastrar">
+		<p:dialog header="Cadastrar" widgetVar="dialogCadastrar" modal="true">
+			<h:panelGrid id="panelCadastrar" columns="2" cellpadding="5">
+				<h:outputText value="Medico Id:" />
+				<p:inputText value="#{medicoController.medicoBean.idmedico}" />
+				<h:outputText value="Endereco:" />
+				<p:inputText value="#{medicoController.medicoBean.nome}" />
+			</h:panelGrid>
+			<p:commandButton value="Cadastrar"
+				actionListener="#{medicoController.cadastrar}"
+				update=":formPrincipal:tabelaMedicos"
+				oncomplete="dialogCadastrar.hide()" />
+		</p:dialog>
+	</h:form>
+	<h:form id="formExcluir">
+		<p:confirmDialog id="Excluir"
+			message="Você gostaria de Deletar o #{medicoController.medicoBean.nome}?"
+			header="Excluir" severity="alert" widgetVar="confirmation">
+
+			<p:commandButton id="confirm" value="Sim"
+				oncomplete="confirmation.hide()"
+				actionListener="#{medicoController.excluir}"
+				update=":formPrincipal:tabelaMedicos" />
+			<p:commandButton id="decline" value="Não"
+				onclick="confirmation.hide()" type="button" />
+
+		</p:confirmDialog>
+	</h:form>
+
+</h:body>
+</html>

@@ -3,11 +3,11 @@ package br.com.financeiro.persistencia;
 import java.io.Serializable;
 import java.util.List;
 
-import br.com.financeiro.util.AgendaException;
+import br.com.financeiro.util.BancoException;
 
 /**
  * Interface que define as operacoes da camada de persistencia generica
- * @author Gilcimar
+ * @author Bruno.Almeida
  *
  */
 public interface GenericoDAO<T, ID extends Serializable> {
@@ -22,37 +22,37 @@ public interface GenericoDAO<T, ID extends Serializable> {
 	 * Inclui um objeto T na base de dados
 	 * @param object
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public T incluir(T object) throws AgendaException;
+	public T incluir(T object) throws BancoException;
 	
 	/**
 	 * Altera um objeto T na base de dados
 	 * @param object
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public T alterar(T object) throws AgendaException;
+	public T alterar(T object) throws BancoException;
 	
 	/**
 	 * Consulta um objeto T da base de dados
 	 * @param id
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public T consultar(Integer id) throws AgendaException;
+	public T consultar(Integer id) throws BancoException;
 	
 	/**
 	 * Exclui um objeto T  da base de dados
 	 * @param id
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public void excluir(Integer id) throws AgendaException;
+	public void excluir(Integer id) throws BancoException;
 	
 	/**
 	 * Lista os objetos T da base de dados
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public List<T> listar() throws AgendaException;
+	public List<T> listar() throws BancoException;
 }

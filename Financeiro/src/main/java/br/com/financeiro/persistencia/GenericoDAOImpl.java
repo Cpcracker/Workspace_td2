@@ -9,11 +9,11 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import br.com.financeiro.util.AgendaException;
+import br.com.financeiro.util.BancoException;
 
 /**
  * Classe que define as operacoes da camada de persistencia generica
- * @author Gilcimar
+ * @author Bruno.Almeida
  *
  */
 public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<T, ID> {
@@ -45,14 +45,14 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 	 * Inclui um objeto T na base de dados
 	 * @param object
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public T incluir(T object) throws AgendaException {
+	public T incluir(T object) throws BancoException {
 		try{
 			getEntityManager().merge(object);
 		}
 		catch (Exception e) {
-			throw new AgendaException(e,"Não foi possível realizar a inclusão.");
+			throw new BancoException(e,"Não foi possível realizar a inclusão.");
 		}
 		return object;
 	}
@@ -61,14 +61,14 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 	 * Altera um objeto T na base de dados
 	 * @param object
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public T alterar(T object) throws AgendaException {
+	public T alterar(T object) throws BancoException {
 		try{
 			getEntityManager().merge(object);
 		}
 		catch (Exception e) {
-			throw new AgendaException(e,"Não foi possível realizar a alteração.");
+			throw new BancoException(e,"Não foi possível realizar a alteração.");
 		}
 		return object;
 	}
@@ -77,18 +77,18 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 	 * Consulta um objeto T da base de dados
 	 * @param id
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public T consultar(Integer id) throws AgendaException {
+	public T consultar(Integer id) throws BancoException {
 		T object = null;
 		try{
 			object = getEntityManager().find(getObjectClass(), id);
 		}
 		catch (EntityNotFoundException e) {
-			throw new AgendaException(e,"Registro não encontrado.");
+			throw new BancoException(e,"Registro não encontrado.");
 		}
 		catch (Exception e) {
-			throw new AgendaException(e,"Não foi possível realizar a consulta.");
+			throw new BancoException(e,"Não foi possível realizar a consulta.");
 		}
 		return object;
 	}
@@ -96,17 +96,17 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 	/**
 	 * Exclui um objeto T  da base de dados
 	 * @param id
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
-	public void excluir(Integer id) throws AgendaException {
+	public void excluir(Integer id) throws BancoException {
 		try{
 			getEntityManager().remove(getEntityManager().getReference(getObjectClass(), id ));
 		}
 		catch (EntityNotFoundException e) {
-			throw new AgendaException(e,"Registro não encontrado para exclusão.");
+			throw new BancoException(e,"Registro não encontrado para exclusão.");
 		}
 		catch (Exception e) {
-			throw new AgendaException(e,"Não foi possível realizar a exclusão.");
+			throw new BancoException(e,"Não foi possível realizar a exclusão.");
 		}
 		
 	}
@@ -114,16 +114,16 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 	/**
 	 * Lista os objetos T da base de dados
 	 * @return
-	 * @throws AgendaException
+	 * @throws BancoException
 	 */
 	@SuppressWarnings("unchecked")
-	public List<T> listar() throws AgendaException {
+	public List<T> listar() throws BancoException {
 		List<T> lista = null;  
         try {  
             Query query = getEntityManager().createQuery("SELECT object(o) FROM " + getObjectClass().getSimpleName() + " AS o");  
             lista = query.getResultList();  
         } catch (Exception e) {  
-            throw new AgendaException(e, "Problemas na localização dos objetos");  
+            throw new BancoException(e, "Problemas na localização dos objetos");  
         }  
         return lista;  
      }
