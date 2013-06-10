@@ -1,7 +1,7 @@
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import br.com.medico.entidade.Medico;
+import br.com.financeiro.entidade.Medico;
 
 
 public class Teste {
