@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+ <!-- Managed Bean Controlador de Pessoa -->
+ <managed-bean>
+  <managed-bean-name>pessoaController</managed-bean-name>
+  <managed-bean-class>br.pucgoias.agenda.controller.PessoaController</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <!-- Regras de navegação para a página de Pessoa -->
+ <navigation-rule>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/xhtml/sucesso.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>falha</from-outcome>
+   <to-view-id>/xhtml/falha.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listar</from-outcome>
+   <to-view-id>/xhtml/vwListarPessoa.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>editar</from-outcome>
+   <to-view-id>/xhtml/vwEditarPessoa.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>criar</from-outcome>
+   <to-view-id>/xhtml/vwCriarPessoa.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <application>
+  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+  <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+ </application>
+</faces-config>

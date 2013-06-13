@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Chamados</title>
+	<script language="javascript" src="../Js/JScript.js" />
+</h:head>
+<h:body>
+	<h:form name="formulario" id="formulario">
+		<p:growl id="growlIndex" showDetail="true" />
+		<p:tabView orientation="left">
+		
+		<p:tab title="S.C.A sobreº">
+				<h:panelGrid width="1080px">					
+				</h:panelGrid>
+			</p:tab>
+
+			<p:tab title="Funcionarios">
+				<h:panelGrid width="1080px">
+
+					<p:tabView orientation="left">
+
+						<p:tab title="Visualizar Funcionarios">
+							<h:panelGrid width="1000px">
+
+
+
+							</h:panelGrid>
+						</p:tab>
+
+						<p:tab title="Adicionar Funcionarios">
+							<h:panelGrid width="1000px">
+
+								<h:form name="formAddFuncionario" id="formAddFuncionario">
+									<h:panelGrid columns="2">
+										<h:inputHidden value="#{pessoaController.pessoaBean.idPessoa}" />
+										<h:inputHidden value="1" />
+
+										<h:outputLabel value="Cadastro de Funcionarios" colspan="2" />
+										<BR />		
+										<BR />
+										<BR />								
+
+										<h:outputLabel value="Nome:" />
+										<p:inputText id="nome"
+											value="#{pessoaController.pessoaBean.nome}" size="20"
+											maxlength="50" />
+
+										<h:outputLabel value="Profissão:" />
+										<p:inputText id="Profissão"
+											value="#{pessoaController.pessoaBean.profissao}" size="20"
+											maxlength="50" />
+
+
+										<h:outputLabel value="Senha:" />
+										<p:password id="senha" feedback="true"
+											value="#{pessoaController.pessoaBean.senha}" size="20"
+											maxlength="50" />
+
+										<h:outputLabel value="Confirme a Senha:" />
+										<p:password id="confSenha" feedback="true"
+											value="#{pessoaController.pessoaBean.senha}" size="20"
+											maxlength="50" />
+
+										<p:commandButton styleClass="button" value="Cadastrar"
+											action="#{pessoaController.senha()}" update="@form"></p:commandButton>
+									</h:panelGrid>
+
+								</h:form>
+
+							</h:panelGrid>
+						</p:tab>
+
+						<p:tab title="Excluir Funcionarios">
+							<h:panelGrid width="1000px">
+
+
+
+							</h:panelGrid>
+						</p:tab>
+
+					</p:tabView>
+				</h:panelGrid>
+			</p:tab>
+
+
+			<p:tab title="Chamados">
+				<h:panelGrid width="1080px">
+
+					<p:tabView orientation="left">
+						<p:tab title="Visualizar Chamados">
+							<h:panelGrid width="1000px">
+
+
+
+							</h:panelGrid>
+						</p:tab>
+
+						<p:tab title="Abrir Chamados">
+							<h:panelGrid width="1000px">
+
+
+
+							</h:panelGrid>
+						</p:tab>
+
+						<p:tab title="Excluir Chamados">
+							<h:panelGrid width="1000px">
+
+
+
+							</h:panelGrid>
+						</p:tab>
+					</p:tabView>
+
+				</h:panelGrid>
+			</p:tab>
+		</p:tabView>
+
+	</h:form>
+</h:body>
+</html>

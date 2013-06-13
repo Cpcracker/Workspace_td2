@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#xhtml#vwListarPessoa.xhtml"
+  PATH="/xhtml/vwListarPessoa.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#xhtml#vwCriarPessoa.xhtml"
+  PATH="/xhtml/vwCriarPessoa.xhtml" SHAPE="560,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#xhtml#vwEditarPessoa.xhtml"
+  PATH="/xhtml/vwEditarPessoa.xhtml" SHAPE="560,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#xhtml#sucesso.xhtml" NAME="output"
+    PATH="/xhtml/sucesso.xhtml" TARGET="rules:#xhtml#sucesso.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="falha::#xhtml#falha.xhtml" NAME="output1"
+    PATH="/xhtml/falha.xhtml" TARGET="rules:#xhtml#falha.xhtml"
+    TITLE="falha" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listar::#xhtml#vwListarPessoa.xhtml"
+    NAME="output2" PATH="/xhtml/vwListarPessoa.xhtml"
+    TARGET="rules:#xhtml#vwListarPessoa.xhtml" TITLE="listar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editar::#xhtml#vwEditarPessoa.xhtml"
+    NAME="output4" PATH="/xhtml/vwEditarPessoa.xhtml"
+    TARGET="rules:#xhtml#vwEditarPessoa.xhtml" TITLE="editar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="criar::#xhtml#vwCriarPessoa.xhtml"
+    NAME="output5" PATH="/xhtml/vwCriarPessoa.xhtml"
+    TARGET="rules:#xhtml#vwCriarPessoa.xhtml" TITLE="criar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#xhtml#falha.xhtml" PATH="/xhtml/falha.xhtml"
+  SHAPE="304,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#xhtml#sucesso.xhtml"
+  PATH="/xhtml/sucesso.xhtml" SHAPE="304,273,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
