@@ -19,7 +19,7 @@ public class PessoaBean {
 	private String profissao;	
 	private String senha;
 	private String confirmaSenha;
-	private List<ChamadoBean> chamados;
+	private List<BancoBean> banco;
 
 	public Integer getIdPessoa() {
 		return idPessoa;
@@ -45,12 +45,12 @@ public class PessoaBean {
 		this.profissao = profissao;
 	}
 	
-	public List<ChamadoBean> getChamados() {
-		return chamados;
+	public List<BancoBean> getBanco() {
+		return banco;
 	}
 
-	public void setChamados(List<ChamadoBean> chamados) {
-		this.chamados = chamados;
+	public void setBanco(List<BancoBean> chamados) {
+		this.banco = chamados;
 	}
 
 	/**

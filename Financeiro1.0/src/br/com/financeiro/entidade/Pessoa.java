@@ -37,7 +37,7 @@ public class Pessoa {
 	private String senha;
 	
 	@OneToMany(mappedBy="pessoa", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	private List<Chamado> chamados;
+	private List<Banco> banco;
 	
 	
 	public Integer getIdPessoa() {
@@ -59,11 +59,11 @@ public class Pessoa {
 		this.profissao = profissao;
 	}
 	
-	public List<Chamado> getChamados() {
-		return chamados;
+	public List<Banco> getBanco() {
+		return banco;
 	}
-	public void setChamados(List<Chamado> chamados) {
-		this.chamados = chamados;
+	public void setBancos(List<Banco> bancos) {
+		this.banco = bancos;
 	}
 	
 	/**

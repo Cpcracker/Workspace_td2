@@ -17,33 +17,33 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name = "chamado")
-public class Chamado {
+@Table(name = "banco")
+public class Banco {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idChamado")
-	private Integer idChamado;
+	@Column(name = "idBanco")
+	private Integer idBanco;
 
 	@Column(name = "descricao")
 	private String descricao;
 
-	@Column(name = "nomeChamado")
-	private String nomeChamado;
+	@Column(name = "nomeBanco")
+	private String nomeBanco;
 
-	@Column(name = "tipo")
-	private String tipo;
+	@Column(name = "agencia")
+	private String agencia;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", nullable = true)
 	private Pessoa pessoa;
 
-	public Integer getIdChamado() {
-		return idChamado;
+	public Integer getIdBanco() {
+		return idBanco;
 	}
 
-	public void setIdChamado(Integer idChamado) {
-		this.idChamado = idChamado;
+	public void setIdBanco(Integer idBanco) {
+		this.idBanco = idBanco;
 	}
 
 	public String getDescricao() {
@@ -54,20 +54,28 @@ public class Chamado {
 		this.descricao = descricao;
 	}
 
-	public String getNomeChamado() {
-		return nomeChamado;
+	public String getNomeBanco() {
+		return nomeBanco;
 	}
 
-	public void setNomeChamado(String nomeChamado) {
-		this.nomeChamado = nomeChamado;
+	public void setNomeBanco(String nomeBanco) {
+		this.nomeBanco = nomeBanco;
+	}
+
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
 	}
 
 	public String getTipo() {
-		return tipo;
+		return agencia;
 	}
 
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.agencia = tipo;
 	}
 
 	public Pessoa getPessoa() {
@@ -83,7 +91,7 @@ public class Chamado {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((idChamado == null) ? 0 : idChamado.hashCode());
+				+ ((idBanco == null) ? 0 : idBanco.hashCode());
 		return result;
 	}
 
@@ -95,11 +103,11 @@ public class Chamado {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Chamado other = (Chamado) obj;
-		if (idChamado == null) {
-			if (other.idChamado != null)
+		Banco other = (Banco) obj;
+		if (idBanco == null) {
+			if (other.idBanco != null)
 				return false;
-		} else if (!idChamado.equals(other.idChamado))
+		} else if (!idBanco.equals(other.idBanco))
 			return false;
 		return true;
 	}

@@ -13,13 +13,15 @@
 </h:head>
 
 <h:body style="background-color: #191970">
-
 	<h:form name="formulario" id="formulario">
 		<p:tabView orientation="left">
 
-			<p:tab title="FINANCEIRO">
+			<p:tab title="FINANCEIRO ">
 				<h:panelGrid width="1080px">
 				</h:panelGrid>
+				<p:column rowpan="1">
+					<p:graphicImage url="/images/financeiro.png" />
+				</p:column>
 
 			</p:tab>
 
@@ -27,28 +29,6 @@
 				<h:panelGrid width="1080px">
 
 					<p:tabView orientation="left">
-
-						<p:tab title="Visualizar Usuarios">
-							<h:panelGrid width="1000px">
-								<p:dataTable var="receber" value="pessoaController.listar()"
-										paginator="true" rows="20"
-										paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-										rowsPerPageTemplate="10,15,25" id="table" emptyMessage="Nenhum registro encontrado"
-										loadingMessage="Buscando..."
-										selectionMode="single" rowKey="" style="width: 50%">
-										
-										<p:column headerText="Id" id="id">
-											<h:outputText value="pessoaController.listaPessoa" />
-										</p:column>
-										
-										<p:column headerText="None" id="nome">
-											<h:outputText value="pessoaBean.nome" />
-										</p:column>
-
-									</p:dataTable>
-							</h:panelGrid>
-						</p:tab>
-
 						<p:tab title="Adicionar Usuarios">
 							<h:panelGrid width="1080px">
 
@@ -99,8 +79,32 @@
 
 							</h:panelGrid>
 						</p:tab>
+						<p:tab title="Visualizar Usuarios">
+							<h:panelGrid width="1000px">
+			
+								<p:dataTable var="pessoa" value="#{pessoaBean.listar}" 
+									paginator="true" rows="20"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10" id="table"
+									emptyMessage="Nenhum registro encontrado"
+									selectionMode="single" rowKey=""
+									style="width: 50%">
 
-						
+									<p:column headerText="Id" id="id">
+										<h:outputText autoUpdate="true" value="#{pessoaBean.idPessoa}" />
+									</p:column>
+
+									<p:column headerText="None" id="nome">
+										<h:outputText autoUpdate="true" value="#{pessoaBean.nome}" />
+									</p:column>
+
+								</p:dataTable>
+							</h:panelGrid>
+						</p:tab>
+
+
+
+
 
 					</p:tabView>
 				</h:panelGrid>

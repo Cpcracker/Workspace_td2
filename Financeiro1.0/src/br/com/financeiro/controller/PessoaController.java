@@ -13,9 +13,9 @@ import javax.faces.event.ActionEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import br.com.financeiro.bean.ChamadoBean;
+import br.com.financeiro.bean.BancoBean;
 import br.com.financeiro.bean.PessoaBean;
-import br.com.financeiro.entidade.Chamado;
+import br.com.financeiro.entidade.Banco;
 import br.com.financeiro.entidade.Pessoa;
 import br.com.financeiro.negocio.PessoaService;
 import br.com.financeiro.util.ChamadoException;
@@ -33,7 +33,7 @@ public class PessoaController {
 	private PessoaBean pessoaBean;
 	private List<PessoaBean> listaPessoaBean;
 	private PessoaService pessoaService;
-	private ChamadoBean chamadoBean;
+	private BancoBean bancoBean;
 
 	public String includ() {
 		try {
@@ -113,11 +113,11 @@ public class PessoaController {
 		pessoaBean = new PessoaBean();
 		if (this.getFacesContext().getExternalContext().getSessionMap()
 				.get("chamados") != null) {
-			pessoaBean.setChamados((List<ChamadoBean>) getSession("chamados"));
+			pessoaBean.setBanco((List<BancoBean>) getSession("chamados"));
 		} else {
-			pessoaBean.setChamados(new ArrayList<ChamadoBean>());
+			pessoaBean.setBanco(new ArrayList<BancoBean>());
 		}
-		chamadoBean = new ChamadoBean();
+		bancoBean = new BancoBean();
 	}
 
 	/**
@@ -142,14 +142,14 @@ public class PessoaController {
 
 			// preeche a lista de Chamados da tela na lista de Chamados
 			// persistente
-			pessoa.setChamados(new ArrayList<Chamado>());
-			for (ChamadoBean chamadoBean : pessoaBean.getChamados()) {
-				Chamado chamado = new Chamado();
-				chamado.setTipo(chamadoBean.getTipo());
-				chamado.setNomeChamado(chamadoBean.getNomeChamado());
-				chamado.setDescricao(chamadoBean.getDescricao());
-				chamado.setPessoa(pessoa);
-				pessoa.getChamados().add(chamado);
+			pessoa.setBancos(new ArrayList<Banco>());
+			for (BancoBean chamadoBean : pessoaBean.getBanco()) {
+				Banco banco = new Banco();
+				banco.setTipo(chamadoBean.getAgencia());
+				banco.setNomeBanco(chamadoBean.getNomeBanco());
+				banco.setDescricao(chamadoBean.getDescricao());
+				banco.setPessoa(pessoa);
+				pessoa.getBanco().add(banco);
 				
 			}
 			
@@ -230,17 +230,17 @@ public class PessoaController {
 			pessoaBean.setProfissao(pessoa.getProfissao());
 
 			// preeche a lista de telefones da tela
-			pessoaBean.setChamados(new ArrayList<ChamadoBean>());
-			for (Chamado chamado : pessoa.getChamados()) {
-				ChamadoBean chamadoBean = new ChamadoBean();
-				chamadoBean.setIdChamado(chamado.getIdChamado());
-				chamadoBean.setTipo(chamado.getTipo());
-				chamadoBean.setNomeChamado(chamado.getNomeChamado());
-				chamadoBean.setDescricao(chamado.getDescricao());
-				pessoaBean.getChamados().add(chamadoBean);
+			pessoaBean.setBanco(new ArrayList<BancoBean>());
+			for (Banco banco : pessoa.getBanco()) {
+				BancoBean chamadoBean = new BancoBean();
+				chamadoBean.setIdBanco(banco.getIdBanco());
+				chamadoBean.setAgencia(banco.getAgencia());
+				chamadoBean.setNomeBanco(banco.getNomeBanco());
+				chamadoBean.setDescricao(banco.getDescricao());
+				pessoaBean.getBanco().add(chamadoBean);
 			}
 
-			this.setSession("chamados", pessoaBean.getChamados());
+			this.setSession("chamados", pessoaBean.getBanco());
 
 			return "editar";
 		} catch (Exception e) {
@@ -262,9 +262,9 @@ public class PessoaController {
 		try {
 
 			pessoaBean = new PessoaBean();
-			pessoaBean.setChamados(new ArrayList<ChamadoBean>());
+			pessoaBean.setBanco(new ArrayList<BancoBean>());
 
-			this.setSession("chamados", pessoaBean.getChamados());
+			this.setSession("chamados", pessoaBean.getBanco());
 
 			return "criar";
 		} catch (Exception e) {
@@ -285,16 +285,16 @@ public class PessoaController {
 	public String adicionar() {
 		try {
 
-			ChamadoBean novo = new ChamadoBean();
-			novo.setTipo(chamadoBean.getTipo());
-			novo.setNomeChamado(chamadoBean.getNomeChamado());
-			novo.setDescricao(chamadoBean.getDescricao());
+			BancoBean novo = new BancoBean();
+			novo.setAgencia(bancoBean.getAgencia());
+			novo.setNomeBanco(bancoBean.getNomeBanco());
+			novo.setDescricao(bancoBean.getDescricao());
 
-			pessoaBean.getChamados().add(novo);
+			pessoaBean.getBanco().add(novo);
 
-			chamadoBean = new ChamadoBean();
+			bancoBean = new BancoBean();
 
-			this.setSession("chamados", pessoaBean.getChamados());
+			this.setSession("chamados", pessoaBean.getBanco());
 
 			return "criar";
 		} catch (Exception e) {
@@ -313,16 +313,16 @@ public class PessoaController {
 	public String adicionarEditar() {
 		try {
 
-			ChamadoBean novo = new ChamadoBean();
-			novo.setTipo(chamadoBean.getTipo());
-			novo.setNomeChamado(chamadoBean.getNomeChamado());
-			novo.setDescricao(chamadoBean.getDescricao());
+			BancoBean novo = new BancoBean();
+			novo.setAgencia(bancoBean.getAgencia());
+			novo.setNomeBanco(bancoBean.getNomeBanco());
+			novo.setDescricao(bancoBean.getDescricao());
 
-			pessoaBean.getChamados().add(novo);
+			pessoaBean.getBanco().add(novo);
 
-			chamadoBean = new ChamadoBean();
+			bancoBean = new BancoBean();
 
-			this.setSession("telefones", pessoaBean.getChamados());
+			this.setSession("telefones", pessoaBean.getBanco());
 
 			return "editar";
 		} catch (Exception e) {
@@ -343,8 +343,8 @@ public class PessoaController {
 
 			HtmlDataTable telefones = (HtmlDataTable) this.getFacesContext()
 					.getViewRoot().findComponent("formulario:chamados");
-			pessoaBean.getChamados().remove(
-					pessoaBean.getChamados().indexOf(telefones.getRowData()));
+			pessoaBean.getBanco().remove(
+					pessoaBean.getBanco().indexOf(telefones.getRowData()));
 
 			return null;
 		} catch (Exception e) {
@@ -415,16 +415,16 @@ public class PessoaController {
 
 			// preeche a lista de Chamados da tela na lista de Chamados
 			// persistente
-			pessoa.setChamados(new ArrayList<Chamado>());
-			for (ChamadoBean chamadoBean : pessoaBean.getChamados()) {
-				Chamado chamado = new Chamado();
-				chamado.setIdChamado(chamadoBean.getIdChamado() == 0 ? null
-						: chamadoBean.getIdChamado());
-				chamado.setTipo(chamadoBean.getTipo());
-				chamado.setNomeChamado(chamadoBean.getNomeChamado());
-				chamado.setDescricao(chamadoBean.getDescricao());
-				chamado.setPessoa(pessoa);
-				pessoa.getChamados().add(chamado);
+			pessoa.setBancos(new ArrayList<Banco>());
+			for (BancoBean bancoBean : pessoaBean.getBanco()) {
+				Banco banco = new Banco();
+				banco.setIdBanco(bancoBean.getIdBanco() == 0 ? null
+						: bancoBean.getIdBanco());
+				banco.setAgencia(bancoBean.getAgencia());
+				banco.setNomeBanco(bancoBean.getNomeBanco());
+				banco.setDescricao(bancoBean.getDescricao());
+				banco.setPessoa(pessoa);
+				pessoa.getBanco().add(banco);
 			}
 
 			getPessoaService().alterar(pessoa);
@@ -487,12 +487,12 @@ public class PessoaController {
 		this.listaPessoaBean = listaPessoaBean;
 	}
 
-	public ChamadoBean getChamadoBean() {
-		return chamadoBean;
+	public BancoBean getChamadoBean() {
+		return bancoBean;
 	}
 
-	public void setChamadoBean(ChamadoBean chamadoBean) {
-		this.chamadoBean = chamadoBean;
+	public void setChamadoBean(BancoBean chamadoBean) {
+		this.bancoBean = chamadoBean;
 	}
 	
 	 public void sucesso(ActionEvent actionEvent) {  

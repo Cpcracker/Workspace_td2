@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.financeiro.entidade.Chamado;
+import br.com.financeiro.entidade.Banco;
 import br.com.financeiro.entidade.Pessoa;
-import br.com.financeiro.persistencia.ChamadoDAO;
+import br.com.financeiro.persistencia.BancoDAO;
 import br.com.financeiro.persistencia.PessoaDAO;
 import br.com.financeiro.util.ChamadoException;
 
@@ -26,14 +26,14 @@ public class PessoaServiceImpl implements PessoaService {
 	// Interface da persistencia
 	private PessoaDAO pessoaDAO;
 	// Interface da persistencia
-	private ChamadoDAO chamadoDAO;
+	private BancoDAO chamadoDAO;
 
-	public ChamadoDAO getchamadoDAO() {
+	public BancoDAO getchamadoDAO() {
 		return chamadoDAO;
 	}
 
 	@Autowired
-	public void setchamadoDAO(ChamadoDAO chamadoDAO) {
+	public void setchamadoDAO(BancoDAO chamadoDAO) {
 		this.chamadoDAO = chamadoDAO;
 	}
 
@@ -72,9 +72,9 @@ public class PessoaServiceImpl implements PessoaService {
 
 		// exclui os itens da base que foram removidos da tela
 		Pessoa pessoaExistente = this.consultar(pessoa.getIdPessoa());
-		for (Chamado chamado : pessoaExistente.getChamados()) {
-			if (!pessoa.getChamados().contains(chamado)) {
-				getchamadoDAO().excluir(chamado.getIdChamado());
+		for (Banco chamado : pessoaExistente.getBanco()) {
+			if (!pessoa.getBanco().contains(chamado)) {
+				getchamadoDAO().excluir(chamado.getIdBanco());
 			}
 		}
 
@@ -93,8 +93,8 @@ public class PessoaServiceImpl implements PessoaService {
 
 		// exclui todos os itens antes de excluir a pessoa
 		Pessoa pessoaExistente = this.consultar(id);
-		for (Chamado chamado : pessoaExistente.getChamados()) {
-			getchamadoDAO().excluir(chamado.getIdChamado());
+		for (Banco chamado : pessoaExistente.getBanco()) {
+			getchamadoDAO().excluir(chamado.getIdBanco());
 		}
 
 		getPessoaDAO().excluir(id);
@@ -112,7 +112,7 @@ public class PessoaServiceImpl implements PessoaService {
 	public Pessoa consultar(Integer id) throws ChamadoException {
 		Pessoa pessoa = getPessoaDAO().consultar(id);
 		// Inicializa a lista de telefones
-		Hibernate.initialize(pessoa.getChamados());
+		Hibernate.initialize(pessoa.getBanco());
 		return pessoa;
 	}
 
