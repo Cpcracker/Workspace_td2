@@ -14,11 +14,11 @@
 	<!-- Indica ao Spring Framework para funcionar com anotacoes -->
     <context:annotation-config/> 
     <!-- Indica o pacote que sera rastreado pelas anotacoes -->
-    <context:component-scan base-package="br.com.chamado"/>
+    <context:component-scan base-package="br.com.financeiro"/>
     
 	<!-- Indica a classe responsável pela gestão das entidades persistentes  -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="chamados" />
+		<property name="persistenceUnitName" value="financeiro" />
 	</bean>
     
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />

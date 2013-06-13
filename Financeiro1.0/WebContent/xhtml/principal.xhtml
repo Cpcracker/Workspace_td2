@@ -30,32 +30,22 @@
 
 						<p:tab title="Visualizar Usuarios">
 							<h:panelGrid width="1000px">
-								<p:dataTable id="tabela" value="#{pessoaController.pessoaBean}"
-									var="pro" emptyMessage="Nenhum registro encontrado"
-									loadingMessage="Buscando..." paginator="true" rows="10"
-									resizableColumns="false" style="width: 67%">
+								<p:dataTable var="receber" value="pessoaController.listar()"
+										paginator="true" rows="20"
+										paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+										rowsPerPageTemplate="10,15,25" id="table" emptyMessage="Nenhum registro encontrado"
+										loadingMessage="Buscando..."
+										selectionMode="single" rowKey="" style="width: 50%">
+										
+										<p:column headerText="Id" id="id">
+											<h:outputText value="pessoaController.listaPessoa" />
+										</p:column>
+										
+										<p:column headerText="None" id="nome">
+											<h:outputText value="pessoaBean.nome" />
+										</p:column>
 
-									<p:column headerText="Nome" style="text-align: center">
-										<h:outputText value="#{pro.nome}" />
-									</p:column>
-									<p:column headerText="Alterar - Excluir"
-										style="text-align: center">
-
-										<p:commandButton action="#{pessoaController.editar}"
-											value="Editar" title="Editar" ajax="false">
-											<f:setPropertyActionListener value="#{pro}"
-												target="#{pessoaController.pessoaBean}" />
-										</p:commandButton>
-
-										<p:commandButton value="Excluir" title="Excluir"
-											onclick="confirmation.show()" onchange="adicionaDeletar()"
-											style="margin-left: 5px">
-											<f:setPropertyActionListener value="#{pro.id}"
-												target="#{pessoaController.pessoaBean.id}" />
-										</p:commandButton>
-
-									</p:column>
-								</p:dataTable>
+									</p:dataTable>
 							</h:panelGrid>
 						</p:tab>
 
@@ -68,9 +58,9 @@
 										<h:inputHidden value="1" />
 
 										<h:outputLabel value="Cadastro de Usuarios" colspan="2" />
-										<BR />
-										<BR />
-										<BR />
+										<br></br>
+										<br></br>
+										<br></br>
 
 										<h:outputLabel value="Nome:" />
 										<p:inputText id="nome"

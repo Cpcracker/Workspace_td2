@@ -1,7 +1,9 @@
-package br.com.chamado.bean;
+package br.com.financeiro.bean;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.faces.bean.ManagedBean;
 
 /**
  * Classe que representa o formulario web de Pessoa
@@ -9,6 +11,7 @@ import java.util.List;
  * @author Bruno.Almeida
  * 
  */
+
 public class PessoaBean {
 
 	private Integer idPessoa;

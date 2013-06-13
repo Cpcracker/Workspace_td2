@@ -1,4 +1,4 @@
-package br.com.chamado.entidade;
+package br.com.financeiro.entidade;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,8 +1,9 @@
-package br.com.chamado.persistencia;
+package br.com.financeiro.persistencia;
 
 import java.io.Serializable;
 import java.util.List;
-import br.com.chamado.util.ChamadoException;
+
+import br.com.financeiro.util.ChamadoException;
 /**
  * Interface que define as operacoes da camada de persistencia generica
  * @author Bruno.Almeida

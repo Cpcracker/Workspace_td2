@@ -1,4 +1,4 @@
-package br.com.chamado.controller;
+package br.com.financeiro.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ import javax.faces.event.ActionEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import br.com.chamado.bean.ChamadoBean;
-import br.com.chamado.bean.PessoaBean;
-import br.com.chamado.entidade.Chamado;
-import br.com.chamado.entidade.Pessoa;
-import br.com.chamado.negocio.PessoaService;
-import br.com.chamado.util.ChamadoException;
+import br.com.financeiro.bean.ChamadoBean;
+import br.com.financeiro.bean.PessoaBean;
+import br.com.financeiro.entidade.Chamado;
+import br.com.financeiro.entidade.Pessoa;
+import br.com.financeiro.negocio.PessoaService;
+import br.com.financeiro.util.ChamadoException;
 
 /**
  * Classe que controla as requisicoes do cliente web
@@ -190,7 +190,6 @@ public class PessoaController {
 				PessoaBean pessoaBean = new PessoaBean();
 				pessoaBean.setIdPessoa(pessoa.getIdPessoa());
 				pessoaBean.setNome(pessoa.getNome());
-				pessoaBean.setProfissao(pessoa.getProfissao());
 				listaPessoaBean.add(pessoaBean);
 			}
 
@@ -204,7 +203,6 @@ public class PessoaController {
 			return "falha";
 		}
 	}
-
 	/**
 	 * Consulta uma pessoa cadastrada
 	 * 
@@ -254,7 +252,7 @@ public class PessoaController {
 			return "falha";
 		}
 	}
-
+        
 	/**
 	 * Cria uma nova pessoa
 	 * 

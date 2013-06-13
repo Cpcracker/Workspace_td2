@@ -1,4 +1,4 @@
-package br.com.chamado.negocio;
+package br.com.financeiro.negocio;
 
 import java.util.List;
 import org.hibernate.Hibernate;
@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.chamado.entidade.Chamado;
-import br.com.chamado.entidade.Pessoa;
-import br.com.chamado.persistencia.ChamadoDAO;
-import br.com.chamado.persistencia.PessoaDAO;
-import br.com.chamado.util.ChamadoException;
+import br.com.financeiro.entidade.Chamado;
+import br.com.financeiro.entidade.Pessoa;
+import br.com.financeiro.persistencia.ChamadoDAO;
+import br.com.financeiro.persistencia.PessoaDAO;
+import br.com.financeiro.util.ChamadoException;
 
 /**
  * Classe que define as operacoes da camada de negocio de Pessoa

@@ -8,7 +8,7 @@
 
 	<managed-bean>
 		<managed-bean-name>pessoaController</managed-bean-name>
-		<managed-bean-class>br.com.chamado.controller.PessoaController</managed-bean-class>
+		<managed-bean-class>br.com.financeiro.controller.PessoaController</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	

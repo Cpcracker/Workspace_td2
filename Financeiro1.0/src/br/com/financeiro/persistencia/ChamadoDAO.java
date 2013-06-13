@@ -1,6 +1,6 @@
-package br.com.chamado.persistencia;
+package br.com.financeiro.persistencia;
 
-import br.com.chamado.entidade.Chamado;
+import br.com.financeiro.entidade.Chamado;
 /**
  * Interface que define as operacoes da camada de persistencia de Chamado
  * @author Bruno.Almeida

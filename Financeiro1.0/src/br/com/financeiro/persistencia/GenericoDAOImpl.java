@@ -1,4 +1,4 @@
-package br.com.chamado.persistencia;
+package br.com.financeiro.persistencia;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -8,7 +8,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import br.com.chamado.util.ChamadoException;
+import br.com.financeiro.util.ChamadoException;
 /**
  * Classe que define as operacoes da camada de persistencia generica
  * @author Bruno.Almeida

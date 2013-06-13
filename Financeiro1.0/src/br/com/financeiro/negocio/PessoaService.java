@@ -1,9 +1,9 @@
-package br.com.chamado.negocio;
+package br.com.financeiro.negocio;
 
 import java.util.List;
 
-import br.com.chamado.entidade.Pessoa;
-import br.com.chamado.util.ChamadoException;
+import br.com.financeiro.entidade.Pessoa;
+import br.com.financeiro.util.ChamadoException;
 /**
  * Interface que define as operacoes da camada de negocio de Pessoa
  * @author Bruno.Almeida

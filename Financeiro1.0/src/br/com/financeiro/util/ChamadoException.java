@@ -1,4 +1,4 @@
-package br.com.chamado.util;
+package br.com.financeiro.util;
 
 public class ChamadoException extends Exception {
 

@@ -1,7 +1,8 @@
-package br.com.chamado.persistencia;
+package br.com.financeiro.persistencia;
 
 import org.springframework.stereotype.Repository;
-import br.com.chamado.entidade.Chamado;
+
+import br.com.financeiro.entidade.Chamado;
 
 /**
  * Classe que define as operacoes da camada de persistencia de Chamado

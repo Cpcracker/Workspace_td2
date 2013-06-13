@@ -1,6 +1,6 @@
-package br.com.chamado.persistencia;
+package br.com.financeiro.persistencia;
 
-import br.com.chamado.entidade.Pessoa;
+import br.com.financeiro.entidade.Pessoa;
 /**
  * Interface que define as operacoes da camada de persistencia de Pessoa
  * @author Bruno.Almeida

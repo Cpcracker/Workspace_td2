@@ -1,4 +1,4 @@
-package br.com.chamado.bean;
+package br.com.financeiro.bean;
 /**
  * Classe que representa o formulario web de Pessoa
  * @author Bruno.Almeida

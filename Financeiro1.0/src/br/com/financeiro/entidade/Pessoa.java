@@ -1,7 +1,9 @@
-package br.com.chamado.entidade;
+package br.com.financeiro.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
  * Classe que representa uma Entidade
- * @author Murillo
+ * @author Bruno.Almeida
  *
  */
 @Entity
