@@ -8,17 +8,19 @@
 <h:head>
 	<title>Financeiro</title>
 	<script language="javascript" src="../Js/JScript.js" />
+	<link rel="StyleSheet" type="text/css" href="../css/estilo.css"></link>
+
 </h:head>
+
 <h:body style="background-color: #191970">
 
 	<h:form name="formulario" id="formulario">
-		<p:growl id="growlIndex" showDetail="true" />
 		<p:tabView orientation="left">
 
 			<p:tab title="FINANCEIRO">
 				<h:panelGrid width="1080px">
 				</h:panelGrid>
-				
+
 			</p:tab>
 
 			<p:tab title="Usuarios">
@@ -28,14 +30,37 @@
 
 						<p:tab title="Visualizar Usuarios">
 							<h:panelGrid width="1000px">
+								<p:dataTable id="tabela" value="#{pessoaController.pessoaBean}"
+									var="pro" emptyMessage="Nenhum registro encontrado"
+									loadingMessage="Buscando..." paginator="true" rows="10"
+									resizableColumns="false" style="width: 67%">
 
+									<p:column headerText="Nome" style="text-align: center">
+										<h:outputText value="#{pro.nome}" />
+									</p:column>
+									<p:column headerText="Alterar - Excluir"
+										style="text-align: center">
 
+										<p:commandButton action="#{pessoaController.editar}"
+											value="Editar" title="Editar" ajax="false">
+											<f:setPropertyActionListener value="#{pro}"
+												target="#{pessoaController.pessoaBean}" />
+										</p:commandButton>
 
+										<p:commandButton value="Excluir" title="Excluir"
+											onclick="confirmation.show()" onchange="adicionaDeletar()"
+											style="margin-left: 5px">
+											<f:setPropertyActionListener value="#{pro.id}"
+												target="#{pessoaController.pessoaBean.id}" />
+										</p:commandButton>
+
+									</p:column>
+								</p:dataTable>
 							</h:panelGrid>
 						</p:tab>
 
 						<p:tab title="Adicionar Usuarios">
-							<h:panelGrid width="1000px">
+							<h:panelGrid width="1080px">
 
 								<h:form name="formAddFuncionario" id="formAddFuncionario">
 									<h:panelGrid columns="2">
@@ -49,30 +74,35 @@
 
 										<h:outputLabel value="Nome:" />
 										<p:inputText id="nome"
-											value="#{pessoaController.pessoaBean.nome}" size="20"
+											value="#{pessoaController.pessoaBean.nome}" size="25"
 											maxlength="50" />
 
 										<h:outputLabel value="Profissão:" />
 										<p:inputText id="Profissão"
-											value="#{pessoaController.pessoaBean.profissao}" size="20"
+											value="#{pessoaController.pessoaBean.profissao}" size="25"
 											maxlength="50" />
 
 
 										<h:outputLabel value="Senha:" />
 										<p:password id="senha" feedback="true"
-											value="#{pessoaController.pessoaBean.senha}" size="20"
+											value="#{pessoaController.pessoaBean.senha}" size="25"
 											maxlength="50" />
 
 										<h:outputLabel value="Confirme a Senha:" />
 										<p:password id="confSenha" feedback="true"
-											value="#{pessoaController.pessoaBean.senha}" size="20"
+											value="#{pessoaController.pessoaBean.senha}" size="25"
 											maxlength="50" />
 
+										<p:growl id="growl" showDetail="true" sticky="true" />
 
-										<p:commandButton styleClass="button" value="Cadastrar"
-											action="#{pessoaController.senha()}" update="@form">
-
-										</p:commandButton>
+									</h:panelGrid>
+									<h:panelGrid>
+										<p:commandButton value="Cadastrar"
+											action="#{pessoaController.incluir()}"
+											actionListener="#{pessoaController.sucesso}" update="growl"
+											image="/images/plus_button.png" />
+										<p:commandButton type="reset" value="Limpar"
+											icon="ui-icon-cancel" />
 									</h:panelGrid>
 
 								</h:form>
@@ -80,11 +110,7 @@
 							</h:panelGrid>
 						</p:tab>
 
-						<p:tab title="Excluir Usuarios">
-							<h:panelGrid width="1000px">
-
-							</h:panelGrid>
-						</p:tab>
+						
 
 					</p:tabView>
 				</h:panelGrid>
@@ -95,7 +121,7 @@
 				<h:panelGrid width="1080px">
 
 					<p:tabView orientation="left">
-						<p:tab title="Visualizar Bancos cadastrados">
+						<p:tab title="Visualizar Bancos">
 							<h:panelGrid width="1000px">
 
 
@@ -103,7 +129,7 @@
 							</h:panelGrid>
 						</p:tab>
 
-						<p:tab title="Abrir Bancos">
+						<p:tab title="Cadastrar Bancos">
 							<h:panelGrid width="1000px">
 
 

@@ -7,7 +7,7 @@
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.password" value="serial2013" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/chamados" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bdfinanceiro" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<!-- <property name="hibernate.hbm2ddl.auto" value="drop-create" /> -->

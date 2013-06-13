@@ -3,9 +3,13 @@ package br.com.chamado.controller;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.EditableValueHolder;
+import javax.faces.component.UIComponent;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.component.html.HtmlInputHidden;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -125,11 +129,16 @@ public class PessoaController {
 		try {
 
 			Pessoa pessoa = new Pessoa();
+			
 
 			// preenche os dados da tela no objeto persistente
 			pessoa.setIdPessoa(pessoaBean.getIdPessoa());
 			pessoa.setNome(pessoaBean.getNome());
 			pessoa.setProfissao(pessoaBean.getProfissao());
+			pessoa.setSenha(pessoaBean.getSenha());
+			
+			
+			
 
 			// preeche a lista de Chamados da tela na lista de Chamados
 			// persistente
@@ -141,8 +150,12 @@ public class PessoaController {
 				chamado.setDescricao(chamadoBean.getDescricao());
 				chamado.setPessoa(pessoa);
 				pessoa.getChamados().add(chamado);
+				
 			}
+			
 			getPessoaService().incluir(pessoa);
+			pessoaBean = new PessoaBean();
+		
 			return "sucesso";
 		} catch (Exception e) {
 			String msg = "Inclusão não realizada. Movito: "
@@ -429,6 +442,14 @@ public class PessoaController {
 		}
 	}
 
+
+	/**
+	 * Editar uma pessoa cadastrada
+	 */
+	public void editar() {
+		
+		
+	}
 	public PessoaService getPessoaService() {
 		return pessoaService;
 	}
@@ -475,5 +496,10 @@ public class PessoaController {
 	public void setChamadoBean(ChamadoBean chamadoBean) {
 		this.chamadoBean = chamadoBean;
 	}
-
+	
+	 public void sucesso(ActionEvent actionEvent) {  
+	        FacesContext context = FacesContext.getCurrentInstance();  
+	        context.addMessage(null, new FacesMessage("Incluido com Sucesso"));  
+	    }  
+	 
 }
